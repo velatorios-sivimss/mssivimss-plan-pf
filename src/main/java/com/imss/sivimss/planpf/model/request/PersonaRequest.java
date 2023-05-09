@@ -1,0 +1,46 @@
+package com.imss.sivimss.planpf.model.request;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
+@Data
+public class PersonaRequest {
+    @JsonProperty
+    private String maricula;
+    @JsonProperty
+    private String rfc;
+    @JsonProperty
+    private String curp;
+    @JsonProperty
+    private String nombre;
+    @JsonProperty
+    private String primerApellido;
+    @JsonProperty
+    private String segundoApellido;
+    @JsonProperty
+    private String calle;
+    @JsonProperty
+    private String numeroExterior;
+    @JsonProperty
+    private String numeroInterior;
+    @JsonProperty
+    private String cp;
+    @JsonProperty
+    private String colonia;
+    @JsonProperty
+    private String municipio;
+    @JsonProperty
+    private String estado;
+    @JsonProperty
+    private String pais;
+    @JsonProperty
+    private String correoElectronico;
+    @JsonProperty
+    private String telefono;
+    @JsonProperty
+    private String enfermedadPreexistente;
+    @JsonProperty
+    private String tipoPaquete;
+    @JsonProperty
+    private PersonaRequest[] beneficiarios;
+}
