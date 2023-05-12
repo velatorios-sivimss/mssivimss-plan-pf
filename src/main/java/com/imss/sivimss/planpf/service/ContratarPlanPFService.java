@@ -8,4 +8,6 @@ import java.io.IOException;
 
 public interface ContratarPlanPFService {
     Response<?> agregarConvenioNuevoPF(DatosRequest request, Authentication authentication) throws IOException;
+    Response<?> consultaPromotores(DatosRequest request, Authentication authentication) throws IOException;
+    Response<?> validaCurpRfc(DatosRequest request, Authentication authentication) throws IOException;
 }

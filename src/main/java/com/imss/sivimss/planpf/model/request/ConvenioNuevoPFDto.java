@@ -20,7 +20,7 @@ public class ConvenioNuevoPFDto {
     @JsonProperty
     private String idPromotor;
     @JsonProperty
-    private String indTipoContratacion;
+    private Integer indTipoContratacion;
     @JsonProperty
     private PorEmpresaRequest empresa;
     @JsonProperty
