@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class PersonaRequest {
     @JsonProperty
-    private String maricula;
+    private String matricula;
     @JsonProperty
     private String rfc;
     @JsonProperty
@@ -40,7 +40,9 @@ public class PersonaRequest {
     @JsonProperty
     private String enfermedadPreexistente;
     @JsonProperty
-    private String tipoPaquete;
+    private String otraEnfermedad;
+    @JsonProperty
+    private String paquete;
     @JsonProperty
     private PersonaRequest[] beneficiarios;
 }

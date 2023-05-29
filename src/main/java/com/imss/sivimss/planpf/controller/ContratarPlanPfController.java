@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.concurrent.CompletableFuture;
 
 @RestController
@@ -33,7 +34,7 @@ public class ContratarPlanPfController {
     @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
     @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
     @TimeLimiter(name = "msflujo")
-    @PostMapping("agregarConvenioNuevoPF")
+    @PostMapping("agregar-convenio-pf")
     public CompletableFuture<?> agregarConvenioNuevoPF(@RequestBody DatosRequest request, Authentication authentication) throws IOException {
         Response<?> response = null;
         return CompletableFuture
@@ -43,8 +44,8 @@ public class ContratarPlanPfController {
     @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
     @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
     @TimeLimiter(name = "msflujo")
-    @PostMapping("validaCurpRfc")
-    public CompletableFuture<?> validaCurpORfc(@RequestBody DatosRequest request, Authentication authentication) throws IOException {
+    @PostMapping("validar-curp-rfc")
+    public CompletableFuture<?> validaCurpRfc(@RequestBody DatosRequest request, Authentication authentication) throws IOException {
         Response<?> response = servicio.validaCurpRfc(request, authentication);
         return CompletableFuture
                 .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
@@ -53,9 +54,49 @@ public class ContratarPlanPfController {
     @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
     @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
     @TimeLimiter(name = "msflujo")
-    @PostMapping("consulta/promotores")
+    @PostMapping("consulta-promotores")
     public CompletableFuture<?> consultaPromotores(@RequestBody DatosRequest request, Authentication authentication) throws IOException {
         Response<?> response = servicio.consultaPromotores(request, authentication) ;
+        return CompletableFuture
+                .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
+    }
+
+    @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @TimeLimiter(name = "msflujo")
+    @PostMapping("consulta-cp")
+    public CompletableFuture<?> consultaCp(@RequestBody DatosRequest request, Authentication authentication) throws IOException {
+        Response<?> response = servicio.consultaCP(request, authentication) ;
+        return CompletableFuture
+                .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
+    }
+
+    @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @TimeLimiter(name = "msflujo")
+    @PostMapping("buscar-folio-persona")
+    public CompletableFuture<?> buscarFolioPersona(@RequestBody DatosRequest request, Authentication authentication) throws IOException, ParseException {
+        Response<?> response = servicio.busquedaFolioPersona(request, authentication);
+        return CompletableFuture
+                .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
+    }
+
+    @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @TimeLimiter(name = "msflujo")
+    @PostMapping("buscar-rfc-empresa")
+    public CompletableFuture<?> buscarRfcEmpresa(@RequestBody DatosRequest request, Authentication authentication) throws IOException, ParseException {
+        Response<?> response = servicio.busquedaRfcEmpresa(request, authentication);
+        return CompletableFuture
+                .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
+    }
+
+    @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @TimeLimiter(name = "msflujo")
+    @PostMapping("descargar-pdf")
+    public CompletableFuture<?> generarPDF(@RequestBody DatosRequest request, Authentication authentication) throws IOException, ParseException {
+        Response<?> response = servicio.generarPDF(request, authentication);
         return CompletableFuture
                 .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
     }

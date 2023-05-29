@@ -10,4 +10,8 @@ public interface ContratarPlanPFService {
     Response<?> agregarConvenioNuevoPF(DatosRequest request, Authentication authentication) throws IOException;
     Response<?> consultaPromotores(DatosRequest request, Authentication authentication) throws IOException;
     Response<?> validaCurpRfc(DatosRequest request, Authentication authentication) throws IOException;
+    Response<?> consultaCP(DatosRequest request, Authentication authentication) throws IOException;
+    Response<?> generarPDF(DatosRequest request, Authentication authentication) throws IOException;
+    Response<?> busquedaFolioPersona(DatosRequest request, Authentication authentication) throws IOException;
+    Response<?> busquedaRfcEmpresa(DatosRequest request, Authentication authentication) throws IOException;
 }
