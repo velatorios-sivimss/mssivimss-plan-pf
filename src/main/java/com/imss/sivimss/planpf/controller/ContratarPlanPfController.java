@@ -36,7 +36,7 @@ public class ContratarPlanPfController {
     @TimeLimiter(name = "msflujo")
     @PostMapping("agregar-convenio-pf")
     public CompletableFuture<?> agregarConvenioNuevoPF(@RequestBody DatosRequest request, Authentication authentication) throws IOException {
-        Response<?> response = null;
+        Response<?> response = servicio.agregarConvenioNuevoPF(request, authentication);
         return CompletableFuture
                 .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
     }
@@ -84,9 +84,29 @@ public class ContratarPlanPfController {
     @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
     @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
     @TimeLimiter(name = "msflujo")
+    @PostMapping("buscar-folio-empresa")
+    public CompletableFuture<?> buscarFolioEmpresa(@RequestBody DatosRequest request, Authentication authentication) throws IOException, ParseException {
+        Response<?> response = servicio.busquedaFolioEmpresa(request, authentication);
+        return CompletableFuture
+                .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
+    }
+
+    @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @TimeLimiter(name = "msflujo")
     @PostMapping("buscar-rfc-empresa")
     public CompletableFuture<?> buscarRfcEmpresa(@RequestBody DatosRequest request, Authentication authentication) throws IOException, ParseException {
         Response<?> response = servicio.busquedaRfcEmpresa(request, authentication);
+        return CompletableFuture
+                .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
+    }
+
+    @CircuitBreaker(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @Retry(name = "msflujo", fallbackMethod = "fallbackGenerico")
+    @TimeLimiter(name = "msflujo")
+    @PostMapping("activar-desactivar-convenio")
+    public CompletableFuture<?> activarDesactivarConvenio(@RequestBody DatosRequest request, Authentication authentication) throws IOException, ParseException {
+        Response<?> response = servicio.activarDesactivarConvenio(request, authentication);
         return CompletableFuture
                 .supplyAsync(() -> new ResponseEntity<>(response, HttpStatus.valueOf(response.getCodigo())));
     }

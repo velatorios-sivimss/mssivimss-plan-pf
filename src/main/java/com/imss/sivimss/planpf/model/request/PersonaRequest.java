@@ -6,43 +6,19 @@ import lombok.Data;
 @Data
 public class PersonaRequest {
     @JsonProperty
-    private String matricula;
+    private String idVelatorio;
     @JsonProperty
-    private String rfc;
+    private String nombreVelatorio;
     @JsonProperty
-    private String curp;
+    private String indTipoContratacion;
     @JsonProperty
-    private String nombre;
+    private String idPromotor;
     @JsonProperty
-    private String primerApellido;
+    private String idPersona;
     @JsonProperty
-    private String segundoApellido;
+    private String idDomicilio;
     @JsonProperty
-    private String calle;
+    private String idContratante;
     @JsonProperty
-    private String numeroExterior;
-    @JsonProperty
-    private String numeroInterior;
-    @JsonProperty
-    private String cp;
-    @JsonProperty
-    private String colonia;
-    @JsonProperty
-    private String municipio;
-    @JsonProperty
-    private String estado;
-    @JsonProperty
-    private String pais;
-    @JsonProperty
-    private String correoElectronico;
-    @JsonProperty
-    private String telefono;
-    @JsonProperty
-    private String enfermedadPreexistente;
-    @JsonProperty
-    private String otraEnfermedad;
-    @JsonProperty
-    private String paquete;
-    @JsonProperty
-    private PersonaRequest[] beneficiarios;
+    private Persona persona;
 }

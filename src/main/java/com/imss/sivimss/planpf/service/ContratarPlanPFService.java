@@ -13,5 +13,7 @@ public interface ContratarPlanPFService {
     Response<?> consultaCP(DatosRequest request, Authentication authentication) throws IOException;
     Response<?> generarPDF(DatosRequest request, Authentication authentication) throws IOException;
     Response<?> busquedaFolioPersona(DatosRequest request, Authentication authentication) throws IOException;
+    Response<?> busquedaFolioEmpresa(DatosRequest request, Authentication authentication) throws IOException;
     Response<?> busquedaRfcEmpresa(DatosRequest request, Authentication authentication) throws IOException;
+    Response<?> activarDesactivarConvenio(DatosRequest request, Authentication authentication) throws IOException;
 }
