@@ -9,7 +9,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.imss.sivimss</groupId>
-	<artifactId>plan-pf</artifactId>
+	<artifactId>mssivimss-plan-prev-fune</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ms plan-pf</name>
 	<description>plan funerario</description>
